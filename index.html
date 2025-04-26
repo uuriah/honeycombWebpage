@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeycomb - Personal Finance Tracker</title>
+    <style>
+        :root {
+            --honey-yellow: #F8B506;
+            --honey-dark: #D18A00;
+            --text-color: #333333;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--honey-yellow);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .app-logo {
+            max-width: 200px;
+            margin-bottom: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .app-store-badge {
+            margin-top: 30px;
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-store-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .privacy-policy {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background-color: white;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .privacy-policy.show {
+            max-height: 5000px; /* Large enough to show all content */
+            padding: 20px;
+            margin: 20px auto;
+        }
+        
+        .privacy-content h2 {
+            color: var(--honey-dark);
+        }
+        
+        .privacy-content h3 {
+            color: var(--honey-dark);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <img src="images/honeycombIcon.png" alt="Honeycomb Logo" class="app-logo">
+        <a href="#" target="_blank">
+            <img class="app-store-badge" src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </div>
+    
+    <div id="privacy-policy" class="privacy-policy">
+        <div class="privacy-content">
+            <h2>Privacy Policy</h2>
+            <p>Last updated: April 25, 2025</p>
+            
+            <h3>Introduction</h3>
+            <p>Your privacy is important to us. This Privacy Policy explains how Honeycomb ("we", "our", or "us") collects, uses, and protects your information when you use our mobile application (the "App").</p>
+            
+            <h3>Information We Collect</h3>
+            <p>Honeycomb is designed with privacy in mind. We collect minimal data necessary to provide our services:</p>
+            <ul>
+                <li><strong>Usage Data:</strong> We may collect anonymous usage statistics to improve the App's functionality.</li>
+                <li><strong>Financial Data:</strong> The financial information you enter in the App is stored locally on your device. If you enable iCloud backup, this data is also stored in your personal iCloud account.</li>
+                <li><strong>Authentication Data:</strong> If you enable biometric authentication, we use Apple's authentication services, but we never have access to your biometric data.</li>
+            </ul>
+            
+            <h3>How We Use Your Information</h3>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Provide, maintain, and improve the App</li>
+                <li>Develop new features and functionality</li>
+                <li>Detect and prevent errors or issues</li>
+            </ul>
+            
+            <h3>Data Storage and Security</h3>
+            <p>All your financial data is stored locally on your iOS device. We use industry-standard encryption to protect your data. When you enable iCloud backup, your data is stored in your personal iCloud account and is subject to Apple's privacy practices and security measures.</p>
+            
+            <h3>Third-Party Services</h3>
+            <p>Honeycomb uses the following third-party services:</p>
+            <ul>
+                <li><strong>Apple iCloud:</strong> For data backup and synchronization (when enabled by you)</li>
+                <li><strong>Apple Authentication:</strong> For biometric authentication (when enabled by you)</li>
+            </ul>
+            <p>Each of these services has their own privacy policies and data handling practices.</p>
+            
+            <h3>Children's Privacy</h3>
+            <p>Honeycomb is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+            
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+            <p>honeycombbudget.app@gmail.com</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Honeycomb Finance App. All rights reserved.</p>
+        <p>
+            <a href="#" id="privacy-toggle">Privacy Policy</a> |
+            <a href="mailto:honeycombbudget.app@gmail.com">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('privacy-toggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            var privacySection = document.getElementById('privacy-policy');
+            privacySection.classList.toggle('show');
+            
+            // Scroll to privacy policy if it's being shown
+            if (privacySection.classList.contains('show')) {
+                privacySection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
